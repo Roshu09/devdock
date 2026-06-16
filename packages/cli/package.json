@@ -1,0 +1,24 @@
+{
+  "name": "@devdock/cli",
+  "version": "0.1.0",
+  "description": "AI-powered dev environment manager",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "devdock": "./src/index.js"
+  },
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "inquirer": "^9.0.0",
+    "chalk": "^5.0.0",
+    "ora": "^8.0.0",
+    "boxen": "^7.0.0",
+    "@devdock/core": "*",
+    "@devdock/ai": "*",
+    "@devdock/shared": "*"
+  }
+}

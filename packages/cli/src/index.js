@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+import { program } from 'commander';
+import chalk from 'chalk';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf8'));
+
+// ASCII banner
+console.log(chalk.cyan(`
+██████╗ ███████╗██╗   ██╗██████╗  ██████╗  ██████╗██╗  ██╗
+██╔══██╗██╔════╝██║   ██║██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝
+██║  ██║█████╗  ██║   ██║██║  ██║██║   ██║██║     █████╔╝ 
+██║  ██║██╔══╝  ╚██╗ ██╔╝██║  ██║██║   ██║██║     ██╔═██╗ 
+██████╔╝███████╗ ╚████╔╝ ██████╔╝╚██████╔╝╚██████╗██║  ██╗
+╚═════╝ ╚══════╝  ╚═══╝  ╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝
+`));
+console.log(chalk.gray(`  AI-powered dev environment manager  v${pkg.version}\n`));
+
+program
+  .name('devdock')
+  .description('AI-powered local dev environment manager')
+  .version(pkg.version);
+
+// Commands — each in its own file for clean structure
+const commands = ['init', 'up', 'down', 'status', 'doctor', 'switch', 'list'];
+
+for (const cmd of commands) {
+  const { default: register } = await import(`./commands/${cmd}.js`);
+  register(program);
+}
+
+program.parse();

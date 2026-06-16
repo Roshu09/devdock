@@ -1,0 +1,9 @@
+{
+  "name": "@devdock/ai",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.js",
+  "dependencies": {
+    "groq-sdk": "^0.3.0"
+  }
+}
