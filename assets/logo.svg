@@ -1,0 +1,52 @@
+<svg width="100%" viewBox="0 0 680 300" role="img">
+<title>devdock logo</title>
+<desc>devdock CLI tool logo with whale and dock imagery</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="180" width="680" height="120" fill="#0a1628" rx="0"/>
+<path d="M0 185 Q85 175 170 185 Q255 195 340 185 Q425 175 510 185 Q595 195 680 185 L680 300 L0 300 Z" fill="#0d1f3c"/>
+<path d="M0 200 Q85 190 170 200 Q255 210 340 200 Q425 190 510 200 Q595 210 680 200" fill="none" stroke="#1a3a6b" stroke-width="1.5"/>
+<path d="M0 215 Q85 205 170 215 Q255 225 340 215 Q425 205 510 215 Q595 225 680 215" fill="none" stroke="#1a3a6b" stroke-width="1"/>
+<rect x="190" y="168" width="300" height="18" fill="#1e3a5f" rx="3"/>
+<rect x="220" y="160" width="12" height="30" fill="#162d4a" rx="2"/>
+<rect x="320" y="160" width="12" height="30" fill="#162d4a" rx="2"/>
+<rect x="448" y="160" width="12" height="30" fill="#162d4a" rx="2"/>
+<rect x="210" y="128" width="52" height="38" fill="#00b4d8" rx="4"/>
+<rect x="213" y="131" width="46" height="14" fill="#0096c7" rx="2"/>
+<text x="236" y="142" text-anchor="middle" fill="white" font-size="9" font-family="monospace" font-weight="700">PG</text>
+<text x="236" y="158" text-anchor="middle" fill="white" font-size="8" font-family="monospace">5432</text>
+<rect x="274" y="128" width="52" height="38" fill="#ef233c" rx="4"/>
+<rect x="277" y="131" width="46" height="14" fill="#d90429" rx="2"/>
+<text x="300" y="142" text-anchor="middle" fill="white" font-size="9" font-family="monospace" font-weight="700">REDIS</text>
+<text x="300" y="158" text-anchor="middle" fill="white" font-size="8" font-family="monospace">6379</text>
+<rect x="338" y="128" width="52" height="38" fill="#2dc653" rx="4"/>
+<rect x="341" y="131" width="46" height="14" fill="#25a244" rx="2"/>
+<text x="364" y="142" text-anchor="middle" fill="white" font-size="9" font-family="monospace" font-weight="700">MONGO</text>
+<text x="364" y="158" text-anchor="middle" fill="white" font-size="8" font-family="monospace">27017</text>
+<rect x="402" y="128" width="52" height="38" fill="#f77f00" rx="4"/>
+<rect x="405" y="131" width="46" height="14" fill="#d62828" rx="2"/>
+<text x="428" y="142" text-anchor="middle" fill="white" font-size="9" font-family="monospace" font-weight="700">MYSQL</text>
+<text x="428" y="158" text-anchor="middle" fill="white" font-size="8" font-family="monospace">3306</text>
+<ellipse cx="340" cy="88" rx="62" ry="42" fill="#00b4d8"/>
+<ellipse cx="382" cy="82" rx="28" ry="24" fill="#00b4d8"/>
+<path d="M278 96 Q258 80 248 68 Q260 72 270 85" fill="#0096c7"/>
+<path d="M278 96 Q255 105 245 118 Q258 108 270 97" fill="#0096c7"/>
+<ellipse cx="350" cy="100" rx="44" ry="22" fill="#90e0ef"/>
+<circle cx="390" cy="76" r="5" fill="white"/>
+<circle cx="392" cy="76" r="3" fill="#023e8a"/>
+<circle cx="393" cy="75" r="1" fill="white"/>
+<path d="M375 58 Q372 40 368 28 Q374 35 376 45 Q380 32 385 22 Q384 35 382 46 Q388 30 396 24 Q390 38 386 50" fill="#caf0f8" stroke="#90e0ef" stroke-width="0.5"/>
+<path d="M385 90 Q393 95 400 91" fill="none" stroke="#023e8a" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="338" y="78" width="8" height="12" fill="#023e8a" rx="1" opacity="0.6"/>
+<text x="340" y="238" text-anchor="middle" fill="#00b4d8" font-size="36" font-family="monospace" font-weight="700" letter-spacing="2">devdock</text>
+<text x="340" y="262" text-anchor="middle" fill="#90e0ef" font-size="12" font-family="monospace" letter-spacing="1">AI-powered dev environment manager</text>
+<circle cx="120" cy="40" r="1.5" fill="#caf0f8" opacity="0.8"/>
+<circle cx="180" cy="20" r="1" fill="#caf0f8" opacity="0.6"/>
+<circle cx="220" cy="55" r="1" fill="#caf0f8" opacity="0.5"/>
+<circle cx="480" cy="30" r="1.5" fill="#caf0f8" opacity="0.7"/>
+<circle cx="540" cy="50" r="1" fill="#caf0f8" opacity="0.6"/>
+<circle cx="580" cy="20" r="1.5" fill="#caf0f8" opacity="0.8"/>
+<circle cx="440" cy="55" r="1" fill="#caf0f8" opacity="0.4"/>
+<circle cx="150" cy="65" r="1" fill="#caf0f8" opacity="0.5"/>
+</svg>
