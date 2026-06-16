@@ -40,6 +40,8 @@ $ devdock up
 
 ## Demo
 
+[![devdock demo](https://asciinema.org/a/6Z6ARAHls3nL3JPz.svg)](https://asciinema.org/a/6Z6ARAHls3nL3JPz?speed=1.5)
+
 > `devdock up` on a real MERN + Postgres + Redis project
 ⚡ devdock up — docmind-saas
 ✔ Detected node project — 2 service(s) needed
