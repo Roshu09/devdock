@@ -1,21 +1,22 @@
 <div align="center">
-██████╗ ███████╗██╗   ██╗██████╗  ██████╗  ██████╗██╗  ██╗
 
-██╔══██╗██╔════╝██║   ██║██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=40&pause=1000&color=00B4D8&center=true&vCenter=true&width=500&height=80&lines=devdock+🐳" alt="devdock" />
 
-██║  ██║█████╗  ██║   ██║██║  ██║██║   ██║██║     █████╔╝
+### AI-powered local dev environment manager
 
-██║  ██║██╔══╝  ╚██╗ ██╔╝██║  ██║██║   ██║██║     ██╔═██╗
+*Clone any repo. Run one command. Everything just works.*
 
-██████╔╝███████╗ ╚████╔╝ ██████╔╝╚██████╔╝╚██████╗██║  ██╗
+<br/>
 
-╚═════╝ ╚══════╝  ╚═══╝  ╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝
+[![npm](https://img.shields.io/npm/v/devdock-cli?color=00b4d8&style=flat-square&logo=npm&label=npm)](https://www.npmjs.com/package/devdock-cli)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-brightgreen?style=flat-square&logo=nodedotjs)](https://nodejs.org)
+[![Docker](https://img.shields.io/badge/Docker-required-blue?style=flat-square&logo=docker)](https://docker.com)
+[![CI](https://github.com/Roshu09/devdock/actions/workflows/ci.yml/badge.svg)](https://github.com/Roshu09/devdock/actions)
 
-**AI-powered local dev environment manager**
+<br/>
 
-[![npm version](https://img.shields.io/npm/v/devdock?color=cyan&style=flat-square)](https://www.npmjs.com/package/devdock)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?style=flat-square)](https://nodejs.org)
+[**Install**](#install) · [**Demo**](#demo) · [**Commands**](#commands) · [**How It Works**](#how-it-works) · [**Contributing**](#contributing)
 
 </div>
 
@@ -24,11 +25,11 @@
 ## The Problem
 
 You clone a repo. You spend the next 2 hours:
-- Installing the right Node version
-- Figuring out which Docker services to spin up
-- Hunting for `.env` values that aren't documented
-- Debugging port conflicts with your other project
-- Googling why Postgres won't connect
+
+- 😤 Figuring out which Docker services to spin up
+- 🔍 Hunting for `.env` values that aren't documented
+- 🔥 Debugging port conflicts with your other project
+- 💀 Googling why Postgres won't connect
 
 **devdock fixes all of this with one command.**
 
@@ -40,102 +41,41 @@ $ devdock up
 
 ## Demo
 
+<div align="center">
+
 [![devdock demo](https://asciinema.org/a/6Z6ARAHls3nL3JPz.svg)](https://asciinema.org/a/6Z6ARAHls3nL3JPz?speed=1.5)
 
-> `devdock up` on a real MERN + Postgres + Redis project
-⚡ devdock up — docmind-saas
-✔ Detected node project — 2 service(s) needed
+*Click to watch — `devdock up` on a real Node.js + Postgres + Redis project*
 
-✔ Docker is ready
-Services to start: postgres, redis
-✔ postgres started on port 5432
-
-✔ redis started on port 6379
-
-✔ .env created with 40 variables
-╭─────────────────────────────────────────────╮
-
-│                                             │
-
-│   ✓ devdock up — everything is running      │
-
-│                                             │
-
-│     Project : docmind-saas                  │
-
-│     Stack   : node                          │
-
-│                                             │
-
-│     Services:                               │
-
-│       • postgres    localhost:5432          │
-
-│       • redis       localhost:6379          │
-
-│                                             │
-
-│     Next: install deps and start your app   │
-
-│     Stop: devdock down                      │
-
-│                                             │
-
-╰─────────────────────────────────────────────╯
-
-> `devdock doctor` — AI diagnoses a broken environment
-🩺 devdock doctor — AI diagnosis
-✔ Diagnosis complete
-DIAGNOSIS
-
-The postgres container is running but the application cannot connect.
-
-DB_HOST is set to 'localhost' but the container expects '127.0.0.1'
-
-on this system configuration.
-ROOT CAUSE
-
-Mismatch between DB_HOST value in .env and the actual container
-
-network binding on this machine.
-FIX STEPS
-
-Open .env and change DB_HOST=localhost to DB_HOST=127.0.0.1
-Restart your application: npm run dev
-Verify connection: devdock status
-
-PREVENTION TIP
-
-Always use 127.0.0.1 instead of localhost for Docker port bindings
-
-on Linux systems to avoid IPv6/IPv4 resolution issues.
+</div>
 
 ---
 
 ## Install
 
 ```bash
-npm install -g devdock
+npm install -g devdock-cli
 devdock init
 ```
 
-Requires: **Node.js 18+**, **Docker**
-
-Get a free Groq API key at [console.groq.com](https://console.groq.com) — needed for `devdock doctor`.
+**Requirements:**
+- Node.js 18+
+- Docker (running)
+- Free Groq API key → [console.groq.com](https://console.groq.com) *(needed for `devdock doctor`)*
 
 ---
 
 ## Commands
 
 | Command | Description |
-|---------|-------------|
-| `devdock init` | One-time setup — configure your Groq API key |
-| `devdock up [path]` | Analyze project + spin up all required services |
+|---|---|
+| `devdock init` | One-time setup — saves your Groq API key |
+| `devdock up [path]` | ⚡ Auto-detect stack + spin up all services |
 | `devdock down [path]` | Stop all services for a project |
-| `devdock status [path]` | Show live container health and ports |
-| `devdock doctor [path]` | AI-powered diagnosis of environment issues |
-| `devdock switch` | Switch dev environment between projects |
-| `devdock list` | List all projects managed by devdock |
+| `devdock status [path]` | Live container health + ports |
+| `devdock doctor [path]` | 🤖 AI diagnosis of broken environments |
+| `devdock switch` | Switch between projects instantly |
+| `devdock list` | All projects managed by devdock |
 
 ---
 
@@ -146,98 +86,121 @@ Your Repo
 
 ▼
 
-┌─────────────────────────────┐
+┌──────────────────────────────────────┐
 
-│      Project Analyzer       │  reads package.json, .env.example,
+│  📦 Project Analyzer                 │
 
-│                             │  Dockerfile, requirements.txt
+│  reads package.json, .env.example,   │
 
-└────────────┬────────────────┘
+│  Dockerfile, requirements.txt        │
 
-│ detects stack + services needed
+└──────────────────┬───────────────────┘
+
+│ detects stack + services
 
 ▼
 
-┌─────────────────────────────┐
+┌──────────────────────────────────────┐
 
-│      Docker Manager         │  pulls images, creates network,
+│  🐳 Docker Manager                   │
 
-│                             │  starts containers on free ports
+│  pulls images, creates network,      │
 
-└────────────┬────────────────┘
+│  starts containers on free ports     │
+
+└──────────────────┬───────────────────┘
 
 │ service URLs + ports
 
 ▼
 
-┌─────────────────────────────┐
+┌──────────────────────────────────────┐
 
-│      ENV Generator          │  creates .env with correct
+│  ⚙️  ENV Generator                   │
 
-│                             │  connection strings auto-filled
+│  creates .env with connection        │
 
-└────────────┬────────────────┘
+│  strings auto-filled                 │
+
+└──────────────────┬───────────────────┘
 
 │
 
 ▼
 
-┌─────────────────────────────┐
+┌──────────────────────────────────────┐
 
-│      AI Engine (Groq)       │  diagnoses issues, infers missing
+│  🤖 AI Engine (Groq / llama-3.3-70b) │
 
-│                             │  config, explains root causes
+│  diagnoses issues, infers missing    │
 
-└─────────────────────────────┘
+│  config, explains root causes        │
 
+└──────────────────────────────────────┘
 ---
 
 ## Supported Stacks
 
-| Stack | Auto-detected via |
-|-------|------------------|
-| Node.js | `package.json` |
-| Python | `requirements.txt`, `pyproject.toml` |
-| PHP | `composer.json` |
-| Go | `go.mod` |
+| Stack | Detected via |
+|---|---|
+| 🟢 Node.js | `package.json` |
+| 🐍 Python | `requirements.txt`, `pyproject.toml` |
+| 🐘 PHP | `composer.json` |
+| 🐹 Go | `go.mod` |
 
 ## Supported Services
 
-| Service | Docker Image |
-|---------|-------------|
-| PostgreSQL | `postgres:15-alpine` |
-| Redis | `redis:7-alpine` |
-| MongoDB | `mongo:7` |
-| MySQL | `mysql:8` |
-| RabbitMQ | `rabbitmq:3-management-alpine` |
+| Service | Image | Default Port |
+|---|---|---|
+| 🐘 PostgreSQL | `postgres:15-alpine` | 5432 |
+| 🔴 Redis | `redis:7-alpine` | 6379 |
+| 🍃 MongoDB | `mongo:7` | 27017 |
+| 🐬 MySQL | `mysql:8` | 3306 |
+| 🐇 RabbitMQ | `rabbitmq:3-management-alpine` | 5672 |
+
+> **Port conflict resolution built-in** — if 5432 is taken, devdock finds the next free port automatically.
 
 ---
 
 ## Why devdock?
 
-- **Zero config** — point it at any repo, it figures the rest out
-- **No docker-compose needed** — devdock manages containers directly
-- **Port conflict resolution** — running two projects? devdock finds free ports automatically
-- **AI-powered diagnosis** — broken environment? `devdock doctor` tells you exactly what's wrong and how to fix it
-- **Project switching** — switch between projects without manually stopping and starting services
-- **Lightweight** — no daemon, no background service, just a CLI
+| Feature | devdock | Manual setup | docker-compose |
+|---|---|---|---|
+| Auto-detects services | ✅ | ❌ | ❌ |
+| Generates .env | ✅ | ❌ | ❌ |
+| Port conflict resolution | ✅ | ❌ | ❌ |
+| AI diagnosis | ✅ | ❌ | ❌ |
+| Multi-project switching | ✅ | ❌ | ❌ |
+| Zero config needed | ✅ | ❌ | ❌ |
 
 ---
 
 ## Contributing
 
-PRs welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+PRs welcome!
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/devdock
+git clone https://github.com/Roshu09/devdock.git
 cd devdock
 npm install
 npm link --workspace=packages/cli
 devdock --version
 ```
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
 ---
 
-## License
+## Tech Stack
 
-MIT © [Roshan Kumar](https://github.com/YOUR_USERNAME)
+Built with: **Node.js** · **Commander.js** · **Dockerode** · **Groq AI** · **Inquirer.js** · **Chalk** · **Ora**
+
+---
+
+<div align="center">
+
+MIT © [Roshan Kumar](https://github.com/Roshu09) · [npm](https://www.npmjs.com/package/devdock-cli) · [Report a Bug](https://github.com/Roshu09/devdock/issues)
+
+*Built by a developer, for developers* 🚀
+
+</div>
