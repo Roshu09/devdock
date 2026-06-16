@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { resolve } from 'path';
-import { ProjectAnalyzer, DockerManager } from '@devdock/core';
+import { ProjectAnalyzer, DockerManager } from '../core/index.js';
 
 export default function register(program) {
   program

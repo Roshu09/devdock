@@ -3,7 +3,7 @@ import ora from 'ora';
 import boxen from 'boxen';
 import { resolve } from 'path';
 import { existsSync } from 'fs';
-import { ProjectAnalyzer, DockerManager, EnvGenerator, Registry } from '@devdock/core';
+import { ProjectAnalyzer, DockerManager, EnvGenerator, Registry } from '../core/index.js';
 
 export default function register(program) {
   program

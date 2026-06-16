@@ -1,7 +1,7 @@
 {
   "name": "devdock-cli",
-  "version": "0.1.0",
-  "description": "AI-powered dev environment manager",
+  "version": "0.1.2",
+  "description": "AI-powered local dev environment manager — zero config, one command",
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -11,14 +11,38 @@
     "dev": "node src/index.js",
     "start": "node src/index.js"
   },
+  "keywords": [
+    "devops",
+    "docker",
+    "cli",
+    "developer-tools",
+    "ai",
+    "environment"
+  ],
+  "author": "Roshan Kumar",
+  "license": "MIT",
+  "homepage": "https://github.com/Roshu09/devdock",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Roshu09/devdock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Roshu09/devdock/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "commander": "^12.0.0",
     "inquirer": "^9.0.0",
     "chalk": "^5.0.0",
     "ora": "^8.0.0",
     "boxen": "^7.0.0",
-    "@devdock/core": "*",
-    "@devdock/ai": "*",
-    "@devdock/shared": "*"
+    "dockerode": "^4.0.0",
+    "detect-port": "^1.6.0",
+    "fs-extra": "^11.0.0",
+    "glob": "^11.0.0",
+    "dotenv": "^16.0.0",
+    "groq-sdk": "^0.3.0"
   }
 }

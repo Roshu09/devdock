@@ -3,8 +3,8 @@ import ora from 'ora';
 import inquirer from 'inquirer';
 import { resolve } from 'path';
 import { existsSync, readFileSync } from 'fs';
-import { ProjectAnalyzer, DockerManager } from '@devdock/core';
-import { diagnose } from '@devdock/ai';
+import { ProjectAnalyzer, DockerManager } from '../core/index.js';
+import { diagnose } from '../ai/index.js';
 
 export default function register(program) {
   program

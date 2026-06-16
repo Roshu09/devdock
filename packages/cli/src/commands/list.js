@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { Registry } from '@devdock/core';
+import { Registry } from '../core/index.js';
 
 export default function register(program) {
   program

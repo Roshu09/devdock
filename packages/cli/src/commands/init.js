@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import ora from 'ora';
 import inquirer from 'inquirer';
 import { mkdirSync, writeFileSync, existsSync } from 'fs';
-import { DEVDOCK_DIR, CONFIG_FILE, PROJECTS_FILE } from '@devdock/shared';
+import { DEVDOCK_DIR, CONFIG_FILE, PROJECTS_FILE } from '../shared/index.js';
 
 export default function register(program) {
   program

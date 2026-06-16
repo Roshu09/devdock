@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import ora from 'ora';
 import { resolve } from 'path';
-import { ProjectAnalyzer, DockerManager, Registry } from '@devdock/core';
+import { ProjectAnalyzer, DockerManager, Registry } from '../core/index.js';
 
 export default function register(program) {
   program
