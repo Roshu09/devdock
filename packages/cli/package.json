@@ -1,11 +1,11 @@
 {
-  "name": "@devdock/cli",
+  "name": "devdock-cli",
   "version": "0.1.0",
   "description": "AI-powered dev environment manager",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "devdock": "./src/index.js"
+    "devdock": "src/index.js"
   },
   "scripts": {
     "dev": "node src/index.js",
