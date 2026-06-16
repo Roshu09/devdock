@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=40&pause=1000&color=00B4D8&center=true&vCenter=true&width=500&height=80&lines=devdock+🐳" alt="devdock" />
+<img src="https://raw.githubusercontent.com/Roshu09/devdock/main/assets/logo.png" alt="devdock" width="600"/>
 
 ### AI-powered local dev environment manager
 
