@@ -37,4 +37,8 @@ for (const cmd of commands) {
   register(program);
 }
 
+// Commands with special names
+const { default: ciGenerate } = await import('./commands/ci-generate.js');
+ciGenerate(program);
+
 program.parse();
