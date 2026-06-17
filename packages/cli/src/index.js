@@ -30,7 +30,7 @@ program
   .description('AI-powered local dev environment manager')
   .version(pkg.version);
 
-const commands = ['init', 'up', 'down', 'status', 'doctor', 'switch', 'list', 'logs'];
+const commands = ['init', 'up', 'down', 'status', 'doctor', 'switch', 'list', 'logs', 'onboard'];
 
 for (const cmd of commands) {
   const { default: register } = await import(`./commands/${cmd}.js`);
