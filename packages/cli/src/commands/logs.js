@@ -51,13 +51,7 @@ export default function register(program) {
         }
 
         const container = docker.getContainer(found.Id);
-        const logStream = await container.logs({
-          stdout: true,
-          stderr: true,
-          tail: parseInt(options.lines),
-          follow: options.follow !== false,
-          timestamps: true
-        });
+        const follow = options.follow !== false;
 
         const serviceColors = {
           postgres: chalk.blue,
@@ -68,34 +62,50 @@ export default function register(program) {
         };
         const colorFn = serviceColors[service] || chalk.white;
 
-        logStream.on('data', (chunk) => {
-          const raw = chunk.slice(8).toString('utf8');
-          const lines = raw.split('\n').filter(Boolean);
-          lines.forEach(line => {
-            const tsMatch = line.match(/^(\d{4}-\d{2}-\d{2}T[\d:.]+Z)\s+(.*)$/);
-            if (tsMatch) {
-              const ts = new Date(tsMatch[1]).toLocaleTimeString();
-              const msg = tsMatch[2];
-              console.log(chalk.gray(`[${ts}] `) + colorFn(msg));
-            } else {
-              console.log(colorFn(line));
-            }
+        const printLine = (line) => {
+          const tsMatch = line.match(/^(\d{4}-\d{2}-\d{2}T[\d:.]+Z)\s+(.*)$/);
+          if (tsMatch) {
+            const ts = new Date(tsMatch[1]).toLocaleTimeString();
+            console.log(chalk.gray(`[${ts}] `) + colorFn(tsMatch[2]));
+          } else if (line.trim()) {
+            console.log(colorFn(line));
+          }
+        };
+
+        if (!follow) {
+          // Static mode — returns Buffer
+          const buffer = await container.logs({
+            stdout: true, stderr: true,
+            tail: parseInt(options.lines),
+            follow: false, timestamps: true
           });
-        });
-
-        logStream.on('error', (err) => {
-          console.error(chalk.red(`\n  Log error: ${err.message}\n`));
-        });
-
-        logStream.on('end', () => {
+          const raw = buffer.toString('utf8');
+          raw.split('\n').forEach(line => printLine(line.slice(8)));
           console.log(chalk.gray('\n' + '─'.repeat(60)));
           console.log(chalk.gray('  End of logs.\n'));
-        });
-
-        process.on('SIGINT', () => {
-          console.log(chalk.gray('\n\n  Stopped following logs.\n'));
-          process.exit(0);
-        });
+        } else {
+          // Stream mode
+          const logStream = await container.logs({
+            stdout: true, stderr: true,
+            tail: parseInt(options.lines),
+            follow: true, timestamps: true
+          });
+          logStream.on('data', (chunk) => {
+            const raw = chunk.slice(8).toString('utf8');
+            raw.split('\n').filter(Boolean).forEach(printLine);
+          });
+          logStream.on('error', (err) => {
+            console.error(chalk.red(`\n  Log error: ${err.message}\n`));
+          });
+          logStream.on('end', () => {
+            console.log(chalk.gray('\n' + '─'.repeat(60)));
+            console.log(chalk.gray('  End of logs.\n'));
+          });
+          process.on('SIGINT', () => {
+            console.log(chalk.gray('\n\n  Stopped following logs.\n'));
+            process.exit(0);
+          });
+        }
 
       } catch (err) {
         console.error(chalk.red(`\n  ✗ ${err.message}\n`));
