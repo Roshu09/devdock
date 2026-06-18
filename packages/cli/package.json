@@ -1,6 +1,6 @@
 {
   "name": "devdock-cli",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "AI-powered local dev environment manager — zero config, one command",
   "type": "module",
   "main": "src/index.js",
