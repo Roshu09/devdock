@@ -61,7 +61,8 @@ devdock init
 
 **Requirements:**
 - Node.js 18+
-- Docker (running)
+- Docker Desktop (Windows/Mac) or Docker Engine (Linux)
+- Windows: Docker Desktop must be running
 - Free Groq API key → [console.groq.com](https://console.groq.com) *(needed for `devdock doctor`)*
 
 ---
