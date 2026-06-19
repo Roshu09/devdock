@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint-and-test:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,27 +23,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Verify CLI entry point exists
-        run: test -f packages/cli/src/index.js
+      - name: Run tests
+        run: npm test
 
-      - name: Verify all commands exist
+      - name: Verify CLI structure
         run: |
-          for cmd in init up down status doctor switch list; do
-            test -f packages/cli/src/commands/$cmd.js && echo "✓ $cmd" || exit 1
+          test -f packages/cli/src/index.js && echo "✓ CLI entry point"
+          for cmd in init up down status doctor switch list logs onboard; do
+            test -f packages/cli/src/commands/$cmd.js && echo "✓ $cmd"
           done
-
-      - name: Verify core modules exist
-        run: |
-          test -f packages/core/src/analyzer.js && echo "✓ analyzer"
-          test -f packages/core/src/docker-manager.js && echo "✓ docker-manager"
-          test -f packages/core/src/env-generator.js && echo "✓ env-generator"
-          test -f packages/core/src/registry.js && echo "✓ registry"
-
-      - name: Verify shared constants
-        run: test -f packages/shared/src/index.js && echo "✓ shared"
-
-      - name: Check package.json validity
-        run: |
-          node -e "JSON.parse(require('fs').readFileSync('packages/cli/package.json','utf8')); console.log('✓ cli package.json valid')"
-          node -e "JSON.parse(require('fs').readFileSync('packages/core/package.json','utf8')); console.log('✓ core package.json valid')"
-

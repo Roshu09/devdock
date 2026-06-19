@@ -3,22 +3,25 @@ import { PROJECTS_FILE, DEVDOCK_DIR } from '@devdock/shared';
 import { mkdirSync } from 'fs';
 
 export class Registry {
-  constructor() {
-    if (!existsSync(DEVDOCK_DIR)) {
-      mkdirSync(DEVDOCK_DIR, { recursive: true });
+  static testDir = null;
+  constructor(customDir = null) {
+    const dir = customDir || DEVDOCK_DIR;
+    this.projectsFile = customDir ? customDir + '/projects.json' : PROJECTS_FILE;
+    if (!existsSync(dir)) {
+      mkdirSync(dir, { recursive: true });
     }
     this.data = this._load();
   }
 
   _load() {
-    if (!existsSync(PROJECTS_FILE)) {
+    if (!existsSync(this.projectsFile)) {
       return { projects: [] };
     }
-    return JSON.parse(readFileSync(PROJECTS_FILE, 'utf8'));
+    return JSON.parse(readFileSync(this.projectsFile, 'utf8'));
   }
 
   _save() {
-    writeFileSync(PROJECTS_FILE, JSON.stringify(this.data, null, 2));
+    writeFileSync(this.projectsFile, JSON.stringify(this.data, null, 2));
   }
 
   register(projectPath, analysis, services) {
