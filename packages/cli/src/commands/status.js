@@ -3,7 +3,12 @@ import { resolve } from 'path';
 import { ProjectAnalyzer, DockerManager } from '@devdock/core';
 import Docker from 'dockerode';
 
-const docker = new Docker({ socketPath: '/var/run/docker.sock' });
+const isWindows = process.platform === 'win32';
+const docker = new Docker(
+  isWindows
+    ? { socketPath: '//./pipe/docker_engine' }
+    : { socketPath: '/var/run/docker.sock' }
+);
 
 export default function register(program) {
   program

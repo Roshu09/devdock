@@ -3,7 +3,12 @@ import { SERVICE_IMAGES, DEFAULT_PORTS } from '@devdock/shared';
 import { createWriteStream } from 'fs';
 import detectPort from "detect-port";
 
-const docker = new Docker({ socketPath: '/var/run/docker.sock' });
+const isWindows = process.platform === 'win32';
+const docker = new Docker(
+  isWindows
+    ? { socketPath: '//./pipe/docker_engine' }
+    : { socketPath: '/var/run/docker.sock' }
+);
 
 export class DockerManager {
   constructor(projectName) {

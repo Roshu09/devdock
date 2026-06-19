@@ -1,4 +1,5 @@
-export const DEVDOCK_DIR = `${process.env.HOME}/.devdock`;
+const homeDir = process.env.HOME || process.env.USERPROFILE || require('os').homedir();
+export const DEVDOCK_DIR = `${homeDir}/.devdock`;
 export const PROJECTS_FILE = `${DEVDOCK_DIR}/projects.json`;
 export const CONFIG_FILE = `${DEVDOCK_DIR}/config.json`;
 
