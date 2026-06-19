@@ -43,6 +43,7 @@ program
     doctor [path]     AI diagnosis of broken environments
     onboard [path]    Generate SETUP.md onboarding guide
     ci:generate       Generate GitHub Actions CI workflow
+    scan [path]       Security and health scan with AI summary
 
   ${chalk.cyan('UTILITIES')}
     logs <service>    Stream live service logs
@@ -50,13 +51,14 @@ program
     list              List all registered projects
 
   ${chalk.cyan('EXAMPLES')}
-    ${chalk.gray('$')} devdock up
-    ${chalk.gray('$')} devdock logs postgres --path ./myproject
-    ${chalk.gray('$')} devdock doctor
-    ${chalk.gray('$')} devdock ci:generate
+    $ devdock up
+    $ devdock logs postgres --path ./myproject
+    $ devdock doctor
+    $ devdock scan
+    $ devdock ci:generate
 `);
 
-const commands = ['init', 'up', 'down', 'status', 'doctor', 'switch', 'list', 'logs', 'onboard'];
+const commands = ['init', 'up', 'down', 'status', 'doctor', 'switch', 'list', 'logs', 'onboard', 'scan'];
 
 for (const cmd of commands) {
   const { default: register } = await import(`./commands/${cmd}.js`);
