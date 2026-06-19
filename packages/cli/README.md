@@ -13,6 +13,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-brightgreen?style=flat-square&logo=nodedotjs)](https://nodejs.org)
 [![Docker](https://img.shields.io/badge/Docker-required-blue?style=flat-square&logo=docker)](https://docker.com)
 [![CI](https://github.com/Roshu09/devdock/actions/workflows/ci.yml/badge.svg)](https://github.com/Roshu09/devdock/actions)
+[![Tests](https://img.shields.io/badge/tests-30%20passing-brightgreen?style=flat-square)](https://github.com/Roshu09/devdock/tree/main/tests)
 
 <br/>
 
