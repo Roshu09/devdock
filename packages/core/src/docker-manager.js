@@ -26,6 +26,27 @@ export class DockerManager {
     }
   }
 
+  static printDockerNotFoundError() {
+    const isWindows = process.platform === 'win32';
+    const isMac = process.platform === 'darwin';
+    console.log('');
+    console.log('[31m  ✗ Docker is not running[0m');
+    console.log('');
+    console.log('[90m  devdock needs Docker to manage services.[0m');
+    console.log('[90m  Install Docker Desktop (free) from:[0m');
+    console.log('[36m  → https://docs.docker.com/get-started/get-docker[0m');
+    console.log('');
+    if (isWindows) {
+      console.log('[90m  Windows users: Install Docker Desktop and enable WSL2 integration.[0m');
+    } else if (isMac) {
+      console.log('[90m  Mac users: Download Docker Desktop from docker.com/products/docker-desktop[0m');
+    } else {
+      console.log('[90m  Linux users: sudo systemctl start docker[0m');
+    }
+    console.log('[90m  Already installed? Make sure Docker Desktop is running, then try again.[0m');
+    console.log('');
+  }
+
   // Pull image if not present locally
   async pullImageIfNeeded(image) {
     const images = await docker.listImages();

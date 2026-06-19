@@ -48,7 +48,8 @@ export default function register(program) {
       const dockerAlive = await manager.ping();
       if (!dockerAlive) {
         dockerSpinner.fail('Docker is not running');
-        console.log(chalk.gray('\n  Start Docker and try again.\n'));
+        DockerManager.printDockerNotFoundError();
+        // note: printDockerNotFoundError shows the full message
         process.exit(1);
       }
       dockerSpinner.succeed('Docker ready');
